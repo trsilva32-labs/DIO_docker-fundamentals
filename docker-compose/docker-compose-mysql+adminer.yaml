@@ -1,0 +1,23 @@
+services:
+  mysqlsrv:
+    image: mysql:8.0.29
+    environment:
+      MYSQL_ROOT_PASSWORD: "admin"
+      MYSQL_DATABASE: "admin"
+    ports:
+      - "3306:3306"
+    volumes:
+      - /data/mysql-C:/var/lib/mysql
+    networks:
+      - my-network
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    networks:
+      - my-network
+
+networks: 
+  my-network:
+    driver: bridge
